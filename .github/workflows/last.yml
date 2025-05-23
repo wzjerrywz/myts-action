@@ -8,6 +8,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: 安装依赖
+        run: npm install @actions/core -g
       - name: 使用自定义 Action
         id: my-action
         uses: wzjerrywz/myts-action@v0.0.1  # 引用发布的版本
