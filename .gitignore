@@ -1,0 +1,13 @@
+# 忽略依赖目录
+node_modules/
+
+# 忽略构建输出目录
+dist/
+
+# 可选的其他常见忽略规则（根据项目需要选择添加）
+.DS_Store
+.env
+*.log
+.idea/
+.vscode/
+*.tsbuildinfo

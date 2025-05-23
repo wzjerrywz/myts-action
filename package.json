@@ -1,0 +1,21 @@
+{
+  "name": "myts-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "package": "ncc build src/main.ts -o dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "@types/node": "^22.15.21",
+    "@vercel/ncc": "^0.38.3",
+    "typescript": "^5.8.3"
+  }
+}
