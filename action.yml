@@ -1,0 +1,15 @@
+name: 'My TypeScript Action'
+description: 'A simple TypeScript action example'
+inputs:
+  name:
+    description: 'Your name'
+    required: true
+  message:
+    description: 'Optional message'
+    required: false
+outputs:
+  greeting:
+    description: 'Generated greeting'
+runs:
+  using: 'node16'
+  main: 'dist/main.js'
