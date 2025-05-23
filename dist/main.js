@@ -36,14 +36,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 async function run() {
     try {
-        // 获取输入参数
-        const name = core.getInput('name', { required: true });
-        const message = core.getInput('message', { required: false });
-        // 执行逻辑
-        core.info(`Hello, ${name}!`);
-        if (message) {
-            core.info(`Message: ${message}`);
-        }
+        console.log('Hello, xxx, yyy,  world!');
         // 设置输出
         core.setOutput('greeting', `Hello, ${name}!`);
     }
@@ -53,4 +46,3 @@ async function run() {
     }
 }
 run();
-
