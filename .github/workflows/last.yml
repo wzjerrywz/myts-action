@@ -1,0 +1,20 @@
+# .github/workflows/use-my-action.yml
+name: Use My TypeScript Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 使用自定义 Action
+        id: my-action
+        uses: wzjerrywz/myts-action@v0.0.1  # 引用发布的版本
+        with:
+          name: 'GitHub Actions'
+          message: 'This is a test'
+      
+      - name: 打印输出
+        run: |
+          echo "Greeting: ${{ steps.my-action.outputs.greeting }}"
