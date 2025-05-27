@@ -6,8 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       source-directory:
-        description: '标题'
+        description: 'env'
         required: true
+        type: environment
       debug-mode:
         description: '重新下载'
         required: true
