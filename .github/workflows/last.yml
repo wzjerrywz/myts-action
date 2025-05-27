@@ -8,6 +8,10 @@ on:
       source-directory:
         description: 'Directory containing files to process'
         required: true
+      debug-mode:
+        description: 'Directory containing files to process'
+        required: true
+        type: boolean
 
 jobs:
   test:
