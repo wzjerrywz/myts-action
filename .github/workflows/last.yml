@@ -6,12 +6,31 @@ on:
   workflow_dispatch:
     inputs:
       source-directory:
-        description: 'Directory containing files to process'
+        description: '标题'
         required: true
       debug-mode:
-        description: 'Directory containing files to process'
+        description: '重新下载'
         required: true
         type: boolean
+      environment:
+        description: 'Select deployment environment'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+          - development
+      region:
+        description: 'Select AWS region'
+        required: false
+        default: 'us-east-1'
+        type: choice
+        options:
+          - us-east-1
+          - us-west-2
+          - eu-central-1        
+        
+        
 
 jobs:
   test:
