@@ -43,6 +43,7 @@ on:
 
 jobs:
   test:
+    environment: ${{ inputs.source-directory }} 
     runs-on: ubuntu-latest
     steps:
       - name: checkout
