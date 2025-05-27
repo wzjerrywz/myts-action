@@ -12,6 +12,10 @@ on:
         description: '重新下载'
         required: true
         type: boolean
+      num-count:
+        description: '数量'
+        required: true
+        type: number  
       environment:
         description: 'Select deployment environment'
         required: true
