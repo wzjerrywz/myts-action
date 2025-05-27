@@ -15,7 +15,7 @@ on:
       num-count:
         description: '数量'
         required: true
-        type: number  
+        type: number
       environment:
         description: 'Select deployment environment'
         required: true
