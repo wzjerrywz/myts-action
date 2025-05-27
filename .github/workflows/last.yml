@@ -1,12 +1,13 @@
 # .github/workflows/use-my-action.yml
 name: Use My TypeScript Action
-inputs:
-  source-directory:
-    description: 'Directory containing files to process'
-    required: true
+
 
 on:
   workflow_dispatch:
+    inputs:
+      source-directory:
+        description: 'Directory containing files to process'
+        required: true
 
 jobs:
   test:
@@ -18,5 +19,5 @@ jobs:
         id: meact
         uses: wzjerrywz/meact@v0.0.1
         with:
-          hello-world: '这是企业苏州'
+          hello-world: ${{ inputs.source-directory }}
       
