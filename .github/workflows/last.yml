@@ -1,6 +1,10 @@
 # .github/workflows/use-my-action.yml
 name: Use My TypeScript Action
 
+env:
+  NODE_ENV: production
+  JDK_HOME: jdk
+  PYTHON_VERSION: python
 
 on:
   workflow_dispatch:
