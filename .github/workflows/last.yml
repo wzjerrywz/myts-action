@@ -10,19 +10,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: 设置 Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      - name: 安装依赖
-        run: npm install @actions/core -g
       - name: 使用自定义 Action
-        id: my-action
-        uses: wzjerrywz/myts-action@v0.0.2
+        id: meact
+        uses: wzjerrywz/meact@v0.0.1
         with:
-          name: 'GitHub Actions'
-          message: 'This is a test'
+          hello-world: '这是企业苏州'
       
-      - name: 打印输出
-        run: |
-          echo "Greeting: ${{ steps.my-action.outputs.greeting }}"
