@@ -8,6 +8,7 @@ on:
         description: 'env'
         required: true
         type: string
+        default: 'us-east-1'
       debug-mode:
         description: '重新下载'
         required: true
@@ -16,6 +17,7 @@ on:
         description: '数量'
         required: true
         type: number
+        default: 22
       environment:
         description: 'Select deployment environment'
         required: true
