@@ -1,0 +1,28 @@
+name: setup--nodejs
+
+on:
+  workflow_dispatch:
+    inputs:
+      nvm-version:
+        description: 'nvm 版本'
+        required: true
+        type: string
+        default: '0.39.3'
+      nodejs-version:
+        description: 'nodejs 版本'
+        required: true
+        type: string
+        default: '18.17.1'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: checkout
+      #   uses: actions/checkout@v4
+      - name: 使用自定义 Action
+        id: meact
+        uses: wzjerrywz/github-actions/setup-nodejs@v1.1.2
+        with:
+          hello-world: hello
+      
