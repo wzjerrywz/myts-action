@@ -1,5 +1,5 @@
 # .github/workflows/use-my-action.yml
-name: setup--npm
+name: test
 
 on:
   workflow_dispatch:
