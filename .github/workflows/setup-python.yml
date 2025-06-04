@@ -1,0 +1,28 @@
+name: setup--nodejs
+
+on:
+  workflow_dispatch:
+    inputs:
+      conda-version:
+        description: 'conda 版本'
+        required: false
+        type: string
+        default: '0.39.3'
+      python-version:
+        description: 'python 版本'
+        required: false
+        type: string
+        default: '18.17.1'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: checkout
+      #   uses: actions/checkout@v4
+      - name: 使用自定义 Action
+        id: meact
+        uses: wzjerrywz/github-actions/setup-python@v1.1.502
+        with:
+          conda-version: ${{ inputs.conda-version }}
+          python-version: ${{ inputs.python-version }}
