@@ -1,4 +1,4 @@
-name: setup--nodejs
+name: setup--python
 
 on:
   workflow_dispatch:
