@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: 使用自定义 Action
         id: meact
-        uses: wzjerrywz/github-actions/build-checkout@v1.5.111
+        uses: wzjerrywz/github-actions/build-checkout@v1.5.113
         with:
           git-version: ${{ inputs.git-version }}
 
