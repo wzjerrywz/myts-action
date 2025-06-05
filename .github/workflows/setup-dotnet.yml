@@ -1,0 +1,23 @@
+name: setup--dotnet
+
+on:
+  workflow_dispatch:
+    inputs:
+      dotnet-version:
+        description: 'dotnet 版本'
+        required: true
+        type: string
+        default: '7.0'
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: checkout
+      #   uses: actions/checkout@v4
+      - name: 使用自定义 Action
+        id: meact
+        uses: wzjerrywz/github-actions/setup-dotnet@v1.5.121
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
