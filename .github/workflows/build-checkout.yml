@@ -1,0 +1,21 @@
+name: build--checkout
+
+on:
+  workflow_dispatch:
+    inputs:
+      git-version:
+        description: 'git 版本'
+        required: false
+        type: string
+        default: '2.47.2'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 使用自定义 Action
+        id: meact
+        uses: wzjerrywz/github-actions/build-checkout@v1.5.111
+        with:
+          git-version: ${{ inputs.git-version }}
+
