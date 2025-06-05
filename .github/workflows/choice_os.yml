@@ -1,0 +1,28 @@
+name: choic--os
+
+on:
+  workflow_dispatch:
+    inputs:
+      os-name:
+        description: '选择运行环境'
+        required: true
+        default: 'ubuntu-latest'
+        type: choice
+        options:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+          - docker://centos:7
+          - docker://debian:11
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 切换服务器
+        id: server-switch
+        run: |
+          echo "选择的服务器：${{ inputs.os-name }}"
+          echo "当前服务器：${{ runner.os }}"
+
+
