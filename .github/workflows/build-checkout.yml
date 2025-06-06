@@ -11,7 +11,8 @@ on:
       git-url:  
         description: 'git url 地址'
         required: false
-        type: string       
+        type: string
+        default: 'git@gitee.com:openwz/react-web.git'
       branch-name:  
         description: '分支名称'
         required: false
@@ -24,7 +25,7 @@ jobs:
     steps:
       - name: 使用自定义 Action
         id: meact
-        uses: wzjerrywz/github-actions/build-checkout@v1.6.1003
+        uses: wzjerrywz/github-actions/build-checkout@v1.6.1005
         with:
           git-version: ${{ inputs.git-version }}
           git-url: ${{ inputs.git-url  }}
