@@ -33,3 +33,7 @@ jobs:
           owner: ${{ inputs.owner }}
           project-name: ${{ inputs.project-name }}
 
+      - name: 输出结果
+        run: |
+          ls -l ./${{ inputs.project-name }}
+
