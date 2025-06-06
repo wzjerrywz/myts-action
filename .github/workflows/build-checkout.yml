@@ -3,31 +3,33 @@ name: build--checkout
 on:
   workflow_dispatch:
     inputs:
-      git-version:
-        description: 'git 版本'
-        required: false
-        type: string
-        default: '1:2.43.0-1ubuntu7.2'
-      git-url:  
-        description: 'git url 地址'
-        required: false
-        type: string
-        default: 'git@gitee.com:openwz/react-web.git'
-      branch-name:  
+      branch-name:
         description: '分支名称'
-        required: false
-        type: string
-        default: 'master'   
+        required: true
+        default: 'master'
+      token:
+        description: 'token'
+        required: true
+        default: 'bc53e10960aa138d07e15d7eb95e6acf'
+      owner:
+        description: 'owner'
+        required: true
+        default: 'openwz'
+      project-name:
+        description: '项目名称'
+        required: true
+        default: 'react-web'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: 使用自定义 Action
+      - name: 使用自定义 [代码检出] Checkout 插件
         id: meact
-        uses: wzjerrywz/github-actions/build-checkout@v1.6.1005
+        uses: wzjerrywz/github-actions/build-checkout@v1.6.1007
         with:
-          git-version: ${{ inputs.git-version }}
-          git-url: ${{ inputs.git-url  }}
-          branch-name: ${{ inputs.branch-name  }}
+          branch-name: ${{ inputs.branch-name }}
+          token: ${{ inputs.token }}
+          owner: ${{ inputs.owner }}
+          project-name: ${{ inputs.project-name }}
 
