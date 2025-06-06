@@ -1,0 +1,52 @@
+name: mixed--npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch-name:
+        description: '分支名称'
+        required: true
+        default: 'master'
+      token:
+        description: 'token'
+        required: true
+        default: 'bc53e10960aa138d07e15d7eb95e6acf'
+      owner:
+        description: 'owner'
+        required: true
+        default: 'openwz'
+      project-name:
+        description: '项目名称'
+        required: true
+        default: 'react-web'
+      ##################  nodejs ##########################  
+      nvm-version:
+        description: 'nvm 版本'
+        required: true
+        type: string
+        default: '0.39.3'
+      nodejs-version:
+        description: 'nodejs 版本'
+        required: true
+        type: string
+        default: '16.14.2'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1.自定义 [Checkout] 插件
+        id: checkout
+        uses: wzjerrywz/github-actions/build-checkout@v1.6.1007
+        with:
+          branch-name: ${{ inputs.branch-name }}
+          token: ${{ inputs.token }}
+          owner: ${{ inputs.owner }}
+          project-name: ${{ inputs.project-name }}
+
+      - name: step2.自定义 [nodejs] 插件
+        id: nodejs
+        uses: wzjerrywz/github-actions/setup-nodejs@v1.6.1007
+        with:
+          nvm-version: ${{ inputs.nvm-version }}
+          nodejs-version: ${{ inputs.nodejs-version }}
