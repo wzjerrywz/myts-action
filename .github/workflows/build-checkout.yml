@@ -8,6 +8,15 @@ on:
         required: false
         type: string
         default: '1:2.43.0-1ubuntu7.2'
+      git-url:  
+        description: 'git url 地址'
+        required: false
+        type: string       
+      branch-name:  
+        description: '分支名称'
+        required: false
+        type: string
+        default: 'master'   
 
 jobs:
   test:
@@ -15,7 +24,9 @@ jobs:
     steps:
       - name: 使用自定义 Action
         id: meact
-        uses: wzjerrywz/github-actions/build-checkout@v1.6.1001
+        uses: wzjerrywz/github-actions/build-checkout@v1.6.1003
         with:
           git-version: ${{ inputs.git-version }}
+          git-url: ${{ inputs.git-url  }}
+          branch-name: ${{ inputs.branch-name  }}
 
