@@ -5,38 +5,42 @@ on:
     inputs:
       ##################  checkout ##########################  
       branch-name:
-        description: 'checkout@1. 分支名称'
+        description: '1@checkout. 分支名称'
         required: true
         default: 'master'
       token:
-        description: 'checkout@1. token'
+        description: '1@checkout. token'
         required: true
         default: 'bc53e10960aa138d07e15d7eb95e6acf'
       owner:
-        description: 'checkout@1. owner'
+        description: '1@checkout. owner'
         required: true
         default: 'openwz'
       project-name:
-        description: 'checkout@1. 项目名称'
+        description: '1@checkout. 项目名称'
         required: true
         default: 'react-web'
       ##################  nodejs ##########################  
       nvm-version:
-        description: 'nodejs@2. nvm 版本'
+        description: '2@nodejs. nvm 版本'
         required: true
         type: string
         default: '0.39.3'
       nodejs-version:
-        description: 'nodejs@2. nodejs 版本'
+        description: '2@nodejs. nodejs 版本'
         required: true
         type: string
         default: '16.14.2'
       ##################  npm ##########################  
       project-path:
-        description: 'npm@3. 项目路径'
+        description: '3@npm. 项目路径'
         required: true
         type: string
         default: './react-web'
+      build-command:
+        description: '3@npm. 构建命令'
+        required: true
+        type: string  
 
 jobs:
   test:
@@ -44,7 +48,7 @@ jobs:
     steps:
       - name: step1.自定义 [build-checkout] 插件
         id: checkout
-        uses: wzjerrywz/github-actions/build-checkout@v1.6.1016
+        uses: wzjerrywz/github-actions/build-checkout@v1.6.1018
         with:
           branch-name: ${{ inputs.branch-name }}
           token: ${{ inputs.token }}
@@ -53,13 +57,14 @@ jobs:
 
       - name: step2.自定义 [setup-nodejs] 插件
         id: nodejs
-        uses: wzjerrywz/github-actions/setup-nodejs@v1.6.1016
+        uses: wzjerrywz/github-actions/setup-nodejs@v1.6.1018
         with:
           nvm-version: ${{ inputs.nvm-version }}
           nodejs-version: ${{ inputs.nodejs-version }}
 
       - name: step3.自定义 [build-npm] 插件
         id: npm
-        uses: wzjerrywz/github-actions/build-npm@v1.6.1016
+        uses: wzjerrywz/github-actions/build-npm@v1.6.1018
         with:
           project-path: ${{ inputs.project-path }}
+          build-command: ${{ inputs.build-command }}
