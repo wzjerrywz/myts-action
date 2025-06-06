@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: step1.自定义 [build-checkout] 插件
         id: checkout
-        uses: wzjerrywz/github-actions/build-checkout@v1.6.1022
+        uses: wzjerrywz/github-actions/build-checkout@v1.6.1025
         with:
           branch-name: ${{ inputs.branch-name }}
           token: ${{ inputs.token }}
@@ -58,14 +58,14 @@ jobs:
 
       - name: step2.自定义 [setup-nodejs] 插件
         id: nodejs
-        uses: wzjerrywz/github-actions/setup-nodejs@v1.6.1022
+        uses: wzjerrywz/github-actions/setup-nodejs@v1.6.1025
         with:
           nvm-version: ${{ inputs.nvm-version }}
           nodejs-version: ${{ inputs.nodejs-version }}
 
       - name: step3.自定义 [build-npm] 插件
         id: npm
-        uses: wzjerrywz/github-actions/build-npm@v1.6.1022
+        uses: wzjerrywz/github-actions/build-npm@v1.6.1025
         with:
           project-path: ${{ inputs.project-path }}
           build-command: ${{ inputs.build-command }}
