@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: step1.自定义 [Checkout] 插件
         id: checkout
-        uses: wzjerrywz/github-actions/build-checkout@v1.6.1007
+        uses: wzjerrywz/github-actions/build-checkout@v1.6.1009
         with:
           branch-name: ${{ inputs.branch-name }}
           token: ${{ inputs.token }}
@@ -46,7 +46,7 @@ jobs:
 
       - name: step2.自定义 [nodejs] 插件
         id: nodejs
-        uses: wzjerrywz/github-actions/setup-nodejs@v1.6.1007
+        uses: wzjerrywz/github-actions/setup-nodejs@v1.6.1009
         with:
           nvm-version: ${{ inputs.nvm-version }}
           nodejs-version: ${{ inputs.nodejs-version }}
