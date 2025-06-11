@@ -18,7 +18,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # - name: checkout
+      # - name: checkout-self
       #   uses: actions/checkout@v4
       - name: 使用自定义 Action
         id: meact
