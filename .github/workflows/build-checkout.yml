@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: 使用自定义 [代码检出] Checkout 插件
         id: meact
-        uses: wzjerrywz/github-actions/build-checkout@v1.16.1001
+        uses: wzjerrywz/github-actions/build-checkout@v1.16.1003
         with:
           branch-name: ${{ inputs.branch-name }}
           token: ${{ inputs.token }}
