@@ -7,7 +7,7 @@ on:
       actions-version:
         description: '1@checkout. actions 版本'
         required: true
-        default: 'v1.16.1017'
+        default: 'v1.16.1019'
       branch-name:
         description: '1@checkout. 分支名称'
         required: true
@@ -46,6 +46,19 @@ on:
         required: true
         type: string
         default: 'build'
+      speed-origin:
+        description: '3@npm. 加速镜像源'
+        required: true
+        type: choice
+        default: 'taobao'
+        options:
+          - npm ---------- https://registry.npmjs.org/
+          - yarn --------- https://registry.yarnpkg.com/
+          - tencent ------ https://mirrors.tencent.com/npm/
+          - cnpm --------- https://r.cnpmjs.org/
+          - taobao ------- https://registry.npmmirror.com/
+          - npmMirror ---- https://skimdb.npmjs.com/registry/
+          - huawei ------- https://repo.huaweicloud.com/repository/npm/
 
 jobs:
   test:
@@ -53,7 +66,7 @@ jobs:
     steps:
       - name: step1.自定义 [build-checkout] 插件
         id: checkout
-        uses: wzjerrywz/github-actions/build-checkout@v1.16.1017
+        uses: wzjerrywz/github-actions/build-checkout@v1.16.1019
         with:
           branch-name: ${{ inputs.branch-name }}
           token: ${{ inputs.token }}
@@ -62,14 +75,14 @@ jobs:
 
       - name: step2.自定义 [setup-nodejs] 插件
         id: nodejs
-        uses: wzjerrywz/github-actions/setup-nodejs@v1.16.1017
+        uses: wzjerrywz/github-actions/setup-nodejs@v1.16.1019
         with:
           nvm-version: ${{ inputs.nvm-version }}
           nodejs-version: ${{ inputs.nodejs-version }}
 
       - name: step3.自定义 [build-npm] 插件
         id: npm
-        uses: wzjerrywz/github-actions/build-npm@v1.16.1017
+        uses: wzjerrywz/github-actions/build-npm@v1.16.1019
         with:
           project-path: ${{ inputs.project-path }}
           build-command: ${{ inputs.build-command }}
