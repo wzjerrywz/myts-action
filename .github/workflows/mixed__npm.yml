@@ -4,26 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       ##################  checkout ##########################  
-      actions-version:
-        description: '1@checkout. actions 版本'
-        required: true
-        default: 'v1.16.1021'
       branch-name:
-        description: '1@checkout. 分支名称'
+        description: '1@checkout. 仓库'
         required: true
-        default: 'master'
-      token:
-        description: '1@checkout. token'
-        required: true
-        default: 'bc53e10960aa138d07e15d7eb95e6acf'
-      owner:
-        description: '1@checkout. owner'
-        required: true
-        default: 'openwz'
-      project-name:
-        description: '1@checkout. 项目名称'
-        required: true
-        default: 'react-web'
+        default: 'gitee/react-web'
       ##################  nodejs ##########################  
       nvm-version:
         description: '2@nodejs. nvm 版本'
