@@ -50,7 +50,7 @@ on:
         description: '3@npm. 加速镜像源'
         required: true
         type: choice
-        default: 'taobao'
+        default: 'taobao ------- https://registry.npmmirror.com/'
         options:
           - npm ---------- https://registry.npmjs.org/
           - yarn --------- https://registry.yarnpkg.com/
