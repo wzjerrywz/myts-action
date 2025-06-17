@@ -51,15 +51,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: step1.自定义 [ build-checkout ] 插件
+      - name: step1.自定义 [ repo-checkout ] 插件
         id: checkout
-        env:
-          GITEE_USERNAME: ${{ secrets.GITEE_USERNAME }}
-          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         uses: wzjerrywz/github-actions/repo-checkout@main
         with:
           repo-name: ${{ inputs.repo-name }}
           branch-name: ${{ inputs.branch-name }}
+          gitee-username: ${{ secrets.GITEE_USERNAME }}
+          gitee-token: ${{ secrets.GITEE_TOKEN }}
 
       - name: step2.自定义 [ setup-openjdk ] 插件
         id: nodejs
