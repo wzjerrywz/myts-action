@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: 自定义 [ setup-gradle ] 插件
         id: openjdk
-        uses: wzjerrywz/github-actions/setup-gradle@v1.17.1013
+        uses: wzjerrywz/github-actions/setup-gradle@main
         with:
           gradle-version: ${{ inputs.gradle-version }}
           install-path: ${{ inputs.install-path }}
