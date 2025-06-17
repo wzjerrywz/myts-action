@@ -1,0 +1,34 @@
+name: setup-openjdk
+
+on:
+  workflow_dispatch:
+    inputs:
+      jdk-version:
+        description: 'jdk 版本'
+        required: true
+        type: choice
+        default: '17.0.2'
+        options:
+          - 17.0.2
+          - 18.0.2
+          - 19.0.1
+          - 20.0.2
+          - 21.0.2
+          - 22.0.2
+          - 23.0.2
+          - 24
+      install-path:
+        description: '安装路径'
+        required: true
+        default: './soft/jdk'           
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 自定义 [ setup-openjdk ] 插件
+        id: openjdk
+        uses: wzjerrywz/github-actions/setup-openjdk@v1.17.1001
+        with:
+          jdk-version: ${{ inputs.jdk-version }}
+          install-path: ${{ inputs.install-path }}
