@@ -53,6 +53,9 @@ jobs:
     steps:
       - name: step1.自定义 [ build-checkout ] 插件
         id: checkout
+        env:
+          GITEE_USERNAME: ${{ secrets.GITEE_USERNAME }}
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         uses: wzjerrywz/github-actions/repo-checkout@main
         with:
           repo-name: ${{ inputs.repo-name }}
