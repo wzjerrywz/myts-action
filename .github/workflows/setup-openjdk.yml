@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: 自定义 [ setup-openjdk ] 插件
         id: openjdk
-        uses: wzjerrywz/github-actions/setup-openjdk@v1.17.1001
+        uses: wzjerrywz/github-actions/setup-openjdk@v1.17.1003
         with:
           jdk-version: ${{ inputs.jdk-version }}
           install-path: ${{ inputs.install-path }}
