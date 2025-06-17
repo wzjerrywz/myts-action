@@ -8,12 +8,13 @@ on:
         description: '1@checkout. 仓库名称'
         required: true
         type: choice
-        default: 'gitee/demo-vue3-npm'
+        default: 'demo-gradle-groovy-build'
         options:
           - gitee/demo-vue3-npm
           - gitee/demo-vue3-yarn
           - gitee/demo-python312-pip
           - gitee/demo-dotnet-nuget
+          - demo-gradle-groovy-build
       branch-name:
         description: '1@checkout. 分支名称'
         required: true
