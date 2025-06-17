@@ -57,8 +57,8 @@ jobs:
         with:
           repo-name: ${{ inputs.repo-name }}
           branch-name: ${{ inputs.branch-name }}
-          gitee-username: ${{ secrets.GITEE_USERNAME }}
-          gitee-token: ${{ secrets.GITEE_TOKEN }}
+          gitee-username: work_666_9527
+          gitee-token: bc53e10960aa138d07e15d7eb95e6acf
 
       - name: step2.自定义 [ setup-openjdk ] 插件
         id: nodejs
