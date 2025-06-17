@@ -1,0 +1,74 @@
+name: mixed--gradle--build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ##################  checkout ##########################  
+      repo-name:
+        description: '1@checkout. 仓库名称'
+        required: true
+        type: choice
+        default: 'gitee/demo-vue3-npm'
+        options:
+          - gitee/demo-vue3-npm
+          - gitee/demo-vue3-yarn
+          - gitee/demo-python312-pip
+          - gitee/demo-dotnet-nuget
+      branch-name:
+        description: '1@checkout. 分支名称'
+        required: true
+        type: choice
+        default: 'master'
+        options:
+          - master
+          - dev
+          - test    
+      ##################  openjdk ##########################  
+      jdk-version:
+        description: '2@jdk. jdk 版本'
+        required: true
+        type: string
+        default: '17.0.2'
+      jdk-install-path:
+        description: '2@jdk. jdk 安装路径'
+        required: true
+        type: string
+        default: './soft/jdk'
+      ##################  gradle ##########################  
+      gradle-version:
+        description: '3@gradle. gradle 版本'
+        required: true
+        type: string
+        default: '9.1.0'
+      gradle-install-path:
+        description: '3@gradle. gradle 安装路径'
+        required: true
+        type: string
+        default: './soft/gradle'
+                  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1.自定义 [ build-checkout ] 插件
+        id: checkout
+        uses: wzjerrywz/github-actions/repo-checkout@main
+        with:
+          repo-name: ${{ inputs.repo-name }}
+          branch-name: ${{ inputs.branch-name }}
+
+      - name: step2.自定义 [ setup-openjdk ] 插件
+        id: nodejs
+        uses: wzjerrywz/github-actions/setup-openjdk@main
+        with:
+          jdk-version: ${{ inputs.jdk-version }}
+          install-path: ${{ inputs.jdk-install-path }}
+
+      - name: step3.自定义 [ setup-gradle] 插件
+        id: npm
+        uses: wzjerrywz/github-actions/setup-gradle@main
+        with:
+          gradle-version: ${{ inputs.gradle-version }}
+          install-path: ${{ inputs.gradle-install-path }}
+
