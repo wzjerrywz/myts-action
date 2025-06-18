@@ -65,12 +65,12 @@ on:
         description: '3@npm. npm 版本'
         required: true
         type: string
-        default: '8.4.1'   
+        default: '8.5.0'   
       nrm-version:
         description: '3@npm. nrm 版本'
         required: true
         type: string
-        default: '1.2.5'               
+        default: '1.4'               
 
 jobs:
   test:
