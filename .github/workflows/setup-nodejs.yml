@@ -12,17 +12,15 @@ on:
         description: 'nodejs 版本'
         required: true
         type: string
-        default: '18.17.1'
+        default: '16.14.2'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # - name: checkout
-      #   uses: actions/checkout@v4
-      - name: 使用自定义 Action
+      - name: 使用自定义 [ setup-nodejs ] 插件
         id: meact
-        uses: wzjerrywz/github-actions/setup-nodejs@v1.1.3
+        uses: wzjerrywz/github-actions/setup-nodejs@main
         with:
           nvm-version: ${{ inputs.nvm-version }}
           nodejs-version: ${{ inputs.nodejs-version }}
