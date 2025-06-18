@@ -1,0 +1,41 @@
+name: tool-compress
+
+on:
+  workflow_dispatch:
+    inputs:
+      ##################  checkout ##########################  
+      repo-name:
+        description: '1@checkout. 仓库名称'
+        required: true
+        type: string
+        default: 'gitee/demo-gradle-groovy-build'
+      branch-name:
+        description: '1@checkout. 分支名称'
+        required: true
+        type: string
+        default: 'master' 
+      ##################  tool-compress ##########################  
+      work-dir:
+        description: '2@compress. 工作目录'
+        required: true
+        type: string
+        default: './demo-gradle-groovy-build'              
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1.自定义 [ repo-checkout ] 插件
+        id: checkout
+        uses: wzjerrywz/github-actions/repo-checkout@main
+        with:
+          repo-name: ${{ inputs.repo-name }}
+          branch-name: ${{ inputs.branch-name }}
+          gitee-username: work_666_9527
+          gitee-token: bc53e10960aa138d07e15d7eb95e6acf
+
+      - name: step2.自定义 [ tool-compress ] 插件
+        id: compress
+        uses: wzjerrywz/github-actions/tool-compress@main
+        with:
+          work-dir: ${{ inputs.work-dir }}
