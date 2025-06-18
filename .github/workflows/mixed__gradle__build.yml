@@ -46,6 +46,17 @@ on:
         required: true
         type: string
         default: './soft/gradle'
+      ##################  build - gradle ##########################  
+      work-dir:
+        description: '4@build. 工作目录'
+        required: true
+        type: string
+        default: './demo-gradle-groovy-build'
+      build-cmd:
+        description: '4@build. 构建命令'
+        required: true
+        type: string
+        default: 'build'        
                   
 
 jobs:
@@ -62,16 +73,22 @@ jobs:
           gitee-token: bc53e10960aa138d07e15d7eb95e6acf
 
       - name: step2.自定义 [ setup-openjdk ] 插件
-        id: nodejs
+        id: openjdk
         uses: wzjerrywz/github-actions/setup-openjdk@main
         with:
           jdk-version: ${{ inputs.jdk-version }}
           install-path: ${{ inputs.jdk-install-path }}
 
       - name: step3.自定义 [ setup-gradle] 插件
-        id: npm
+        id: gradle
         uses: wzjerrywz/github-actions/setup-gradle@main
         with:
           gradle-version: ${{ inputs.gradle-version }}
           install-path: ${{ inputs.gradle-install-path }}
 
+      - name: step4.自定义 [ build-gradle] 插件
+        id: build
+        uses: wzjerrywz/github-actions/build-gradle@main
+        with:
+          work-dir: ${{ inputs.work-dir }}
+          build-cmd: ${{ inputs.build-cmd }}
