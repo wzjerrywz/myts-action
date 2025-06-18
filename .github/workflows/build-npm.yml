@@ -1,0 +1,38 @@
+name: build--npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      npm-version:
+        description: 'npm 版本'
+        required: true
+        default: '8.5.0'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 使用 nodejs 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: 安装 npm
+        run: npm install -g npm@${{ inputs.npm-version }}
+      - name: 使用自定义 [ build-npm ]  插件
+        id: meact
+        uses: wzjerrywz/github-actions/build-npm@main
+        with:
+          npm-version: ${{ inputs.npm-version }}
+          build-command: 'build'
+          project-path: './'
+          nrm-version: '1.4'
+          nrm-speed: 'taobao'
+
+
+          
+
+
+
+    
+
