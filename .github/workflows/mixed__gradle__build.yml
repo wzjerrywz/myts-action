@@ -56,8 +56,17 @@ on:
         description: '4@build. 构建命令'
         required: true
         type: string
-        default: 'build'        
-                  
+        default: 'build'
+      skip-test:
+        description: '4@build. 跳过测试'
+        required: true
+        type: boolean
+        default: false         
+      other-params:
+        description: '4@build. 补充参数'
+        required: false
+        type: string
+        default: ''               
 
 jobs:
   test:
