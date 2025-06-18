@@ -39,7 +39,7 @@ on:
         description: '3@npm. 项目路径'
         required: true
         type: string
-        default: './react-web'
+        default: './demo-vue3-npm'
       build-command:
         description: '3@npm. 构建命令'
         required: true
