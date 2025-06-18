@@ -1,0 +1,27 @@
+name: build--gradle
+
+on:
+  workflow_dispatch:
+    inputs:
+      work-dir:
+        description: '工作目录'
+        required: true
+        default: './'
+      build-cmd:
+        description: '构建命令'
+        required: true
+        default: 'build'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 使用自定义 [ build-gradle ]  插件
+        id: meact
+        uses: wzjerrywz/github-actions/build-gradle@main
+        with:
+          work-dir: ${{ inputs.work-dir }}
+          build-cmd: ${{ inputs.build-cmd }}
+
+    
+
