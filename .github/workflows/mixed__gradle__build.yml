@@ -103,14 +103,14 @@ jobs:
           jdk-version: ${{ inputs.jdk-version }}
           install-path: ${{ inputs.jdk-install-path }}
 
-      - name: step3.自定义 [ setup-gradle] 插件
+      - name: step3.自定义 [ setup-gradle ] 插件
         id: gradle
         uses: wzjerrywz/github-actions/setup-gradle@main
         with:
           gradle-version: ${{ inputs.gradle-version }}
           install-path: ${{ inputs.gradle-install-path }}
 
-      - name: step4.自定义 [ build-gradle] 插件
+      - name: step4.自定义 [ build-gradle ] 插件
         id: build
         uses: wzjerrywz/github-actions/build-gradle@main
         with:
@@ -118,3 +118,12 @@ jobs:
           build-cmd: ${{ inputs.build-cmd }}
           skip-test: ${{ inputs.skip-test }}
           other-params: ${{ inputs.other-params }}
+      
+      - name: step5.自定义 [ tool-compress ] 插件
+        id: compress
+        uses: wzjerrywz/github-actions/tool-compress@main
+        with:
+          work-dir: './demo-gradle-groovy-build'
+          format: 'tar.gz'
+          compressed-name: 'demo'
+          need-dir: './build'
