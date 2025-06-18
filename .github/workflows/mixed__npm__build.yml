@@ -76,25 +76,25 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: step1.自定义 [build-checkout] 插件
+      - name: step1.自定义 [ repo-checkout ] 插件
         id: checkout
-        uses: wzjerrywz/github-actions/build-checkout@v1.16.1021
+        uses: wzjerrywz/github-actions/repo-checkout@main
         with:
+          repo-name: ${{ inputs.repo-name }}
           branch-name: ${{ inputs.branch-name }}
-          token: ${{ inputs.token }}
-          owner: ${{ inputs.owner }}
-          project-name: ${{ inputs.project-name }}
+          gitee-username: work_666_9527
+          gitee-token: bc53e10960aa138d07e15d7eb95e6acf
 
-      - name: step2.自定义 [setup-nodejs] 插件
+      - name: step2.自定义 [ setup-nodejs ] 插件
         id: nodejs
-        uses: wzjerrywz/github-actions/setup-nodejs@v1.16.1021
+        uses: wzjerrywz/github-actions/setup-nodejs@main
         with:
           nvm-version: ${{ inputs.nvm-version }}
           nodejs-version: ${{ inputs.nodejs-version }}
 
-      - name: step3.自定义 [build-npm] 插件
+      - name: step3.自定义 [ build-npm ] 插件
         id: npm
-        uses: wzjerrywz/github-actions/build-npm@v1.16.1021
+        uses: wzjerrywz/github-actions/build-npm@main
         with:
           project-path: ${{ inputs.project-path }}
           build-command: ${{ inputs.build-command }}
