@@ -31,7 +31,14 @@ on:
       format:
         description: '压缩格式'
         required: true
-        default: 'tar.gz'                      
+        default: 'tar.gz'  
+        type: choice
+        options:
+          - tar.gz
+          - rar
+          - zip
+
+
 
 jobs:
   test:
