@@ -19,7 +19,19 @@ on:
         description: '2@compress. 工作目录'
         required: true
         type: string
-        default: './demo-gradle-groovy-build'              
+        default: './demo-gradle-groovy-build'
+      compressed-name:
+        description: '压缩之后的文件名'
+        required: true
+        default: 'archive'
+      need-dir:
+        description: '需要被压缩的目录'
+        required: true
+        default: './src'
+      format:
+        description: '压缩格式'
+        required: true
+        default: 'tar.gz'                      
 
 jobs:
   test:
@@ -39,3 +51,8 @@ jobs:
         uses: wzjerrywz/github-actions/tool-compress@main
         with:
           work-dir: ${{ inputs.work-dir }}
+          compressed-name: ${{ inputs.compressed-name }}
+          need-dir: ${{ inputs.need-dir }}
+          format: ${{ inputs.format }}
+
+          
