@@ -19,15 +19,15 @@ on:
         description: '2@compress. 工作目录'
         required: true
         type: string
-        default: './demo-gradle-groovy-build'
+        default: './'
       compressed-name:
         description: '压缩之后的文件名'
         required: true
-        default: 'archive'
+        default: 'demo'
       need-dir:
         description: '需要被压缩的目录'
         required: true
-        default: './src'
+        default: './demo-gradle-groovy-build'
       format:
         description: '压缩格式'
         required: true
