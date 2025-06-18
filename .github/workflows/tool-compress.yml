@@ -37,6 +37,7 @@ on:
           - tar.gz
           - rar
           - zip
+          - xz
 
 
 
