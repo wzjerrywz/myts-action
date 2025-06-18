@@ -101,3 +101,5 @@ jobs:
         with:
           work-dir: ${{ inputs.work-dir }}
           build-cmd: ${{ inputs.build-cmd }}
+          skip-test: ${{ inputs.skip-test }}
+          other-params: ${{ inputs.other-params }}
