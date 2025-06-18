@@ -1,4 +1,4 @@
-name: mixed--npm
+name: mixed--npm--build
 
 on:
   workflow_dispatch:
