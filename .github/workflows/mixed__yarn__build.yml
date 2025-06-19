@@ -1,0 +1,81 @@
+name: mixed--yarn--build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ##################  checkout ##########################  
+      repo-name:
+        description: '1@checkout. 仓库名称'
+        required: true
+        type: choice
+        default: 'gitee/demo-vue3-yarn'
+        options:
+          - gitee/demo-vue3-npm
+          - gitee/demo-vue3-yarn
+          - gitee/demo-python312-pip
+          - gitee/demo-dotnet-nuget
+      branch-name:
+        description: '1@checkout. 分支名称'
+        required: true
+        type: choice
+        default: 'master'
+        options:
+          - master
+          - dev
+          - test    
+      ##################  nodejs ##########################  
+      nvm-version:
+        description: '2@nodejs. nvm 版本'
+        required: true
+        type: string
+        default: '0.39.3'
+      nodejs-version:
+        description: '2@nodejs. nodejs 版本'
+        required: true
+        type: string
+        default: '16.14.2'
+      ##################  yarn ##########################  
+      project-path:
+        description: '3@yarn. 项目路径'
+        required: true
+        type: string
+        default: './demo-vue3-yarn'
+      build-command:
+        description: '3@yarn. 构建命令'
+        required: true
+        type: string
+        default: 'build'
+      yarn-version:
+        description: '3@yarn. yarn 版本'
+        required: true
+        type: string
+        default: '1.22.22'          
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1.自定义 [ repo-checkout ] 插件
+        id: checkout
+        uses: wzjerrywz/github-actions/repo-checkout@main
+        with:
+          repo-name: ${{ inputs.repo-name }}
+          branch-name: ${{ inputs.branch-name }}
+          gitee-username: work_666_9527
+          gitee-token: bc53e10960aa138d07e15d7eb95e6acf
+
+      - name: step2.自定义 [ setup-nodejs ] 插件
+        id: nodejs
+        uses: wzjerrywz/github-actions/setup-nodejs@main
+        with:
+          nvm-version: ${{ inputs.nvm-version }}
+          nodejs-version: ${{ inputs.nodejs-version }}
+
+      - name: step3.自定义 [ build-npm ] 插件
+        id: npm
+        uses: wzjerrywz/github-actions/build-yarn@main
+        with:
+          project-path: ${{ inputs.project-path }}
+          build-command: ${{ inputs.build-command }}
+          yarn-version: ${{ inputs.yarn-version }} 
+          
