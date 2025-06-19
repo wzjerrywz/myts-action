@@ -7,7 +7,7 @@ on:
         description: 'conda 版本'
         required: false
         type: string
-        default: '0.39.3'
+        default: 'py39_25.3.1-1'
       python-version:
         description: 'python 版本'
         required: false
