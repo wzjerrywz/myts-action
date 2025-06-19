@@ -1,0 +1,77 @@
+name: mixed--pip--build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ##################  checkout ##########################  
+      repo-name:
+        description: '1@checkout. 仓库名称'
+        required: true
+        type: choice
+        default: 'gitee/demo-python312-pip'
+        options:
+          - gitee/demo-vue3-npm
+          - gitee/demo-vue3-yarn
+          - gitee/demo-python312-pip
+          - gitee/demo-dotnet-nuget
+      branch-name:
+        description: '1@checkout. 分支名称'
+        required: true
+        type: choice
+        default: 'master'
+        options:
+          - master
+          - dev
+          - test    
+      ##################  python ##########################  
+      conda-version:
+        description: '2@python. conda 版本'
+        required: true
+        type: string
+        default: 'py39_25.3.1-1'
+      python-version:
+        description: '2@python. python 版本'
+        required: true
+        type: string
+        default: '3.12.6'
+      virtual-env:
+        description: '2@python. 虚拟环境名称'
+        required: false
+        type: string
+        default: 'virenv'  
+      ##################  pip ##########################  
+      pip-version:
+        description: '3@pip. pip 版本'
+        required: true
+        type: string
+        default: '23.1.0'          
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1.自定义 [ repo-checkout ] 插件
+        id: checkout
+        uses: wzjerrywz/github-actions/repo-checkout@main
+        with:
+          repo-name: ${{ inputs.repo-name }}
+          branch-name: ${{ inputs.branch-name }}
+          gitee-username: work_666_9527
+          gitee-token: bc53e10960aa138d07e15d7eb95e6acf
+
+      - name: step2.自定义 [ setup-python ] 插件
+        id: python
+        uses: wzjerrywz/github-actions/setup-python@main
+        with:
+          conda-version: ${{ inputs.conda-version }}
+          python-version: ${{ inputs.python-version }}
+          virtual-env: ${{ inputs.virtual-env }}
+
+      - name: step3.自定义 [ build-pip ] 插件
+        id: pip
+        uses: wzjerrywz/github-actions/build-pip@main
+        with:
+          virtual-env: ${{ steps.python.outputs.virtual-env }}
+          pip-version: ${{ inputs.pip-version }}
+
+          
