@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 使用自定义 [ setup-python ] 插件
-        id: meact
+        id: python
         uses: wzjerrywz/github-actions/setup-python@main
         with:
           conda-version: ${{ inputs.conda-version }}
