@@ -13,6 +13,11 @@ on:
         required: false
         type: string
         default: '3.12.6'
+      virtual-env:
+        description: '虚拟环境名称'
+        required: false
+        type: string
+        default: 'virenv'
 
 jobs:
   test:
@@ -24,3 +29,4 @@ jobs:
         with:
           conda-version: ${{ inputs.conda-version }}
           python-version: ${{ inputs.python-version }}
+          virtual-env: ${{ inputs.virtual-env }}
