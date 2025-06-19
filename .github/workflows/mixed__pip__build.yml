@@ -44,7 +44,22 @@ on:
         description: '3@pip. pip 版本'
         required: true
         type: string
-        default: '23.1.0'          
+        default: '25.1.1'    
+      pkg-mode:
+        description: '3@pip. 打包方式'
+        required: true
+        type: choice
+        default: 'setup'
+        options:
+          - setup
+          - build
+          - pyinstaller
+      work-dir:
+        description: '3@pip. 工作目录'
+        required: true
+        type: string
+        default: './demo-python312-pip'   
+        
 
 jobs:
   test:
@@ -73,5 +88,7 @@ jobs:
         with:
           virtual-env: ${{ steps.python.outputs.virtual-env }}
           pip-version: ${{ inputs.pip-version }}
+          pkg-mode: ${{ inputs.pkg-mode }}
+          work-dir: ${{ inputs.work-dir }}
 
           
