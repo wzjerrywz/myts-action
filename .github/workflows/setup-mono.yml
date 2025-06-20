@@ -1,0 +1,21 @@
+name: setup--mono
+
+on:
+  workflow_dispatch:
+    inputs:
+      mono-version:
+        description: 'mono 版本'
+        required: true
+        type: string
+        default: '6.12'        
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 自定义 [ setup-mono ] 插件
+        id: mono
+        uses: wzjerrywz/github-actions/setup-mono@main
+        with:
+          mono-version: ${{ inputs.mono-version }}
+
