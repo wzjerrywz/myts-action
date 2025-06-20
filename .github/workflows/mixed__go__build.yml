@@ -52,7 +52,7 @@ on:
         description: '4@build. 输出文件名'
         required: true
         type: string
-        default: 'app'
+        default: './dist/app'
       
 jobs:
   test:
@@ -84,5 +84,6 @@ jobs:
       - name: step4. ls
         run: |
           ls -l ${{ inputs.work-dir }}
+          ls -l ${{ inputs.work-dir }}/dist
 
           
