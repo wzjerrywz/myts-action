@@ -1,0 +1,88 @@
+name: mixed--go--build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ##################  checkout ##########################  
+      repo-name:
+        description: '1@checkout. 仓库名称'
+        required: true
+        type: choice
+        default: 'gitee/demo-go-build'
+        options:
+          - gitee/demo-vue3-npm
+          - gitee/demo-vue3-yarn
+          - gitee/demo-python312-pip
+          - gitee/demo-dotnet-nuget
+          - gitee/demo-gradle-groovy-build
+          - gitee/demo-go-build
+      branch-name:
+        description: '1@checkout. 分支名称'
+        required: true
+        type: choice
+        default: 'master'
+        options:
+          - master
+          - dev
+          - test    
+      ##################  go ##########################  
+      go-version:
+        description: '2@go. go 版本'
+        required: true
+        type: choice
+        default: '9.1.0'
+        options:
+          - '9.1.0'
+          - '9.0.0'
+          - '8.14.2'
+          - '7.6.5'
+          - '7.6.4'
+      go-install-path:
+        description: '3@go. go 安装路径'
+        required: true
+        type: string
+        default: './soft/go'
+      ##################  build - go ##########################  
+      work-dir:
+        description: '3@build. 工作目录'
+        required: true
+        type: string
+        default: './demo-go-build'
+      out-file:
+        description: '4@build. 输出文件名'
+        required: true
+        type: string
+        default: 'app'
+      
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1.自定义 [ repo-checkout ] 插件
+        id: checkout
+        uses: wzjerrywz/github-actions/repo-checkout@main
+        with:
+          repo-name: ${{ inputs.repo-name }}
+          branch-name: ${{ inputs.branch-name }}
+          gitee-username: work_666_9527
+          gitee-token: bc53e10960aa138d07e15d7eb95e6acf
+
+      - name: step2.自定义 [ setup-go ] 插件
+        id: go
+        uses: wzjerrywz/github-actions/setup-go@main
+        with:
+          go-version: ${{ inputs.go-version }}
+          install-path: ${{ inputs.go-install-path }}
+
+      - name: step3.自定义 [ build-go ] 插件
+        id: build
+        uses: wzjerrywz/github-actions/build-go@main
+        with:
+          work-dir: ${{ inputs.work-dir }}
+          out-file: ${{ inputs.out-file }}
+      
+      - name: step4. ls
+        run: |
+          ls -l ${{ inputs.work-dir }}
+
+          
