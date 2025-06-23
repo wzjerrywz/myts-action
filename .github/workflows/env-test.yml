@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: hello
     steps:
-      - name: 自定义 [ env-test ] 插件 update
+      - name: 自定义 [ env-test ] 插件 update1
         id: maven
         uses: wzjerrywz/github-actions/env-test@main
         with:
