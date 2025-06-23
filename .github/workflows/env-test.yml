@@ -1,0 +1,21 @@
+name: env--test
+
+on:
+  workflow_dispatch:
+    inputs:
+      env-name:
+        description: '环境变量名称'
+        required: true
+        type: string
+        default: JD_USER    
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 自定义 [ env-test ] 插件
+        id: maven
+        uses: wzjerrywz/github-actions/env-test@main
+        with:
+          env-name: ${{ inputs.env-name }}
+
