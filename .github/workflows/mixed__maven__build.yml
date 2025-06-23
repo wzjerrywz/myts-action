@@ -1,0 +1,117 @@
+name: mixed--maven--build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ##################  checkout ##########################  
+      repo-name:
+        description: '1@checkout. 仓库名称'
+        required: true
+        type: choice
+        default: 'gitee/demo-maven-build'
+        options:
+          - gitee/demo-vue3-npm
+          - gitee/demo-vue3-yarn
+          - gitee/demo-python312-pip
+          - gitee/demo-dotnet-nuget
+          - gitee/demo-maven-build
+      branch-name:
+        description: '1@checkout. 分支名称'
+        required: true
+        type: choice
+        default: 'master'
+        options:
+          - master
+          - dev
+          - test    
+      ##################  openjdk ##########################  
+      jdk-version:
+        description: '2@jdk. jdk 版本'
+        required: true
+        type: choice
+        default: '17.0.2'
+        options:
+          - '17.0.2'
+          - '18.0.2'
+          - '19.0.1'
+          - '20.0.2'
+          - '21.0.2'
+          - '22.0.2'
+          - '23.0.2'
+          - '24'
+      jdk-install-path:
+        description: '2@jdk. jdk 安装路径'
+        required: true
+        type: string
+        default: './soft/jdk'
+      ##################  maven ##########################  
+      maven-version:
+        description: '3@maven 版本'
+        required: true
+        type: choice
+        default: 3.9.9
+        options:
+          - 3.9.9
+          - 3.8.6
+          - 3.6.3
+          - 3.5.2
+          - 3.3.3
+          - 3.2.1
+          - 3.1.0
+          - 3.0.4
+      maven-install-path:
+        description: '3@maven 安装路径'
+        required: true
+        default: './soft/maven' 
+      ##################  build - maven ##########################  
+      work-dir:
+        description: '4@build. 工作目录'
+        required: true
+        type: string
+        default: './demo-maven-build'
+      skip-test:
+        description: '4@build. 跳过测试'
+        required: true
+        type: boolean
+        default: false                        
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1.自定义 [ repo-checkout ] 插件
+        id: checkout
+        uses: wzjerrywz/github-actions/repo-checkout@main
+        with:
+          repo-name: ${{ inputs.repo-name }}
+          branch-name: ${{ inputs.branch-name }}
+          gitee-username: work_666_9527
+          gitee-token: bc53e10960aa138d07e15d7eb95e6acf
+
+      - name: step2.自定义 [ setup-openjdk ] 插件
+        id: openjdk
+        uses: wzjerrywz/github-actions/setup-openjdk@main
+        with:
+          jdk-version: ${{ inputs.jdk-version }}
+          install-path: ${{ inputs.jdk-install-path }}
+
+      - name: step3.自定义 [ setup-maven ] 插件
+        id: maven
+        uses: wzjerrywz/github-actions/setup-maven@main
+        with:
+          maven-version: ${{ inputs.maven-version }}
+          install-path: ${{ inputs.maven-install-path }}
+
+      - name: step4.自定义 [ build-maven ] 插件
+        id: build
+        uses: wzjerrywz/github-actions/build-maven@main
+        with:
+          work-dir: ${{ inputs.work-dir }}
+          skip-test: ${{ inputs.skip-test }}
+      
+      - name: step5.ls
+        id: ls
+        run: |
+          pwd
+          ls -l ./
+          
