@@ -26,10 +26,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: 自定义 [ setup-maven ] 插件
+      - name: 自定义 [ setup-maven ] 插件 测试
         id: maven
         uses: wzjerrywz/github-actions/setup-maven@main
         with:
           maven-version: ${{ inputs.maven-version }}
           install-path: ${{ inputs.install-path }}
+
 
