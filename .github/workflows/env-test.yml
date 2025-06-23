@@ -19,4 +19,5 @@ jobs:
         uses: wzjerrywz/github-actions/env-test@main
         with:
           env-name: ${{ inputs.env-name }}
+          jd-user: ${{ vars.JD_USER }}
 
