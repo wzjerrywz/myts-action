@@ -13,7 +13,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: 自定义 [ env-test ] 插件 ok
+      - name: 自定义 [ env-test ] 插件 ok ok
         id: maven
         uses: wzjerrywz/github-actions/env-test@main
         with:
