@@ -12,6 +12,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: test
     steps:
       - name: 自定义 [ env-test ] 插件 ok ok
         id: maven
