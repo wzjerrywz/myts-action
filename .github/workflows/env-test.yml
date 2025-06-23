@@ -19,5 +19,5 @@ jobs:
         uses: wzjerrywz/github-actions/env-test@main
         with:
           env-name: ${{ inputs.env-name }}
-          jd-user: "${{ vars.JD_USER }} - ${{ secrets.JD_PWD }}"
+          jd-user: "${{ vars.JD_USER }} - ${{ vars.JD_PWD }} - ${{ secrets.JD_PWD }}"
 
