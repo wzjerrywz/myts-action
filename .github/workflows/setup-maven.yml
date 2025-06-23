@@ -26,7 +26,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: 自定义 [ setup-maven ] 插件 测试
+      - name: 自定义 [ setup-maven ] 插件2
         id: maven
         uses: wzjerrywz/github-actions/setup-maven@main
         with:
