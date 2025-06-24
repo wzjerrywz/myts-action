@@ -72,7 +72,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: step1.自定义 [ repo-checkout ] 插件
         id: checkout
