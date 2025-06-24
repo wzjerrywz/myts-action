@@ -38,13 +38,14 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: step1. 使用自定义 [ setup-mono ]  插件
         id: mono
         uses: wzjerrywz/github-actions/setup-mono@main
         with:
           mono-version: ${{ inputs.mono-version }}
+          
       - name: step2. 使用自定义 [ build-nuget ]  插件
         id: nuget
         uses: wzjerrywz/github-actions/build-nuget@main
