@@ -13,7 +13,7 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-      - name: 自定义 [ setup-mono ] 插件
+      - name: 自定义 [ setup-mono ] 插件 ++
         id: mono
         uses: wzjerrywz/github-actions/setup-mono@main
         with:
