@@ -1,0 +1,105 @@
+name: mixed--nuget--build
+
+on:
+  workflow_dispatch:
+    inputs:
+      ##################  checkout ##########################  
+      repo-name:
+        description: '1@checkout. 仓库名称'
+        required: true
+        type: choice
+        default: 'gitee/demo-dotnet-nuget'
+        options:
+          - gitee/demo-vue3-npm
+          - gitee/demo-vue3-yarn
+          - gitee/demo-python312-pip
+          - gitee/demo-dotnet-nuget
+      branch-name:
+        description: '1@checkout. 分支名称'
+        required: true
+        type: choice
+        default: 'master'
+        options:
+          - master
+          - dev
+          - test    
+      ##################  setup-mono ##########################  
+      mono-version:
+        description: 'mono 版本'
+        required: true
+        type: choice
+        default: 6.12.0.199
+        options:
+          - 6.12.0.199
+          - 6.10.0.104
+          - 6.8.0.123
+          - 6.6.0.166
+          - 6.4.0.198
+          - 6.0.0.344
+      ##################  build-nuget ##########################  
+      nuget-version:
+        description: 'nuget 版本'
+        required: true
+        default: 6.13.2
+        type: choice
+        options:
+          - 6.13.2
+          - 6.12.4
+          - 6.11.1
+          - 6.10.2
+          - 6.9.1
+          - 6.8.1
+          - 6.7.1
+          - 6.6.2
+          - 6.5.1
+          - 6.4.3
+          - 6.3.4
+          - 6.2.4
+          - 6.1.0
+          - 6.0.6
+      work-dir:
+        description: '工作目录'
+        required: true
+        default: './demo-dotnet-nuget'
+      app-name:
+        description: '应用名称'
+        required: true
+        default: 'MyWebApp'
+      props-value:
+        description: '属性值'
+        required: true
+        default: 'version=1.3.2;author=kaka;id=kaka;description=kaka'                  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1.自定义 [ repo-checkout ] 插件
+        id: checkout
+        uses: wzjerrywz/github-actions/repo-checkout@main
+        with:
+          repo-name: ${{ inputs.repo-name }}
+          branch-name: ${{ inputs.branch-name }}
+          gitee-username: work_666_9527
+          gitee-token: bc53e10960aa138d07e15d7eb95e6acf
+
+      - name: step2.自定义 [ setup-mono ] 插件
+        id: mono
+        uses: wzjerrywz/github-actions/setup-mono@main
+        with:
+          mono-version: ${{ inputs.mono-version }}
+
+      - name: step3.自定义 [ build-nuget ] 插件
+        id: nuget
+        uses: wzjerrywz/github-actions/build-nuget@main
+        with:
+          nuget-version: ${{ inputs.nuget-version }}
+          work-dir: ${{ inputs.work-dir }}
+          app-name: ${{ inputs.app-name }}
+          props-value: ${{ inputs.props-value }}
+
+      - name: print
+        id: print
+        run: |
+          ls -l ./
+          pwd    
