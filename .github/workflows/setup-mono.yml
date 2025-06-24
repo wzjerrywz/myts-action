@@ -6,8 +6,17 @@ on:
       mono-version:
         description: 'mono 版本'
         required: true
-        type: string
-        default: '6.12.0.199'        
+        type: choice
+        default: 6.12.0.199
+        options:
+          - 6.12.0.199
+          - 6.10.0.104
+          - 6.8.0.123
+          - 6.6.0.166
+          - 6.4.0.198
+          - 6.0.0.344
+          
+            
 
 jobs:
   test:
