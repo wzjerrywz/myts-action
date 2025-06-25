@@ -64,7 +64,7 @@ on:
       app-name:
         description: '3@nuget 应用名称'
         required: true
-        default: 'MyWebApp'
+        default: 'demo-dotnet-nuget'
       props-value:
         description: '3@nuget 属性值'
         required: true
