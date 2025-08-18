@@ -16,6 +16,29 @@ on:
           - branch
           - commitId
           - tag
+      ref-value:
+        description: '引用值'
+        required: true
+        default: dev
+      target-path:
+        description: '目标路径'
+        required: false
+        default: ./     
+      recurse-submodules:
+        description: '是否克隆子模块'
+        required: false
+        default: false
+        type: boolean
+      custom-depth:
+        description: '克隆深度'
+        required: false
+        default: 2
+        type: number      
+      enable-lfs:
+        description: '是否启用LFS'
+        required: false
+        default: false
+        type: boolean          
 
 jobs:
   test:
