@@ -3,10 +3,10 @@ name: build--npm
 on:
   workflow_dispatch:
     inputs:
-      npm-version:
-        description: 'npm 版本'
+      repository:
+        description: '仓库地址'
         required: true
-        default: '8.5.0'
+        default: 'https://github.com/fix/test.git'
 
 jobs:
   test:
